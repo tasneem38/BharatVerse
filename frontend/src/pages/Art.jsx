@@ -60,7 +60,7 @@ export default function Art() {
 
   return (
     <div style={{
-      maxWidth: 1050,
+      maxWidth: 1100,
       margin: '2.2rem auto',
       padding: '1.5rem',
       fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
@@ -73,8 +73,8 @@ export default function Art() {
           Explore traditional Indian art forms and generate creative themes
         </p>
       </div>
-
-      {/* Notion-style Compact Horizontal Art Form Cards */}
+      
+      {/* Notion-style Compact Grid Cards */}
       <h2 style={{
         marginBottom: 'var(--spacing-md)',
         color: 'var(--primary)',
@@ -82,65 +82,69 @@ export default function Art() {
       }}>
         Traditional Heritage Art Forms
       </h2>
-      <div className="heritage-carousel-row" style={{
-        display: 'flex',
-        flexDirection: 'row',
-        gap: '1.5rem',
-        overflowX: 'auto',
-        scrollSnapType: 'x mandatory',
-        paddingBottom: '0.5rem',
-        marginBottom: '2.5rem',
-        WebkitOverflowScrolling: 'touch'
-      }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
+          gap: '1.3rem',
+          margin: '0 auto 2rem auto',
+          maxWidth: 960
+        }}
+      >
         {artForms.map((art, idx) => (
           <div
             key={idx}
             className="heritage-card"
             tabIndex={0}
             style={{
-              minWidth: 220,
-              maxWidth: 250,
-              flex: '0 0 auto',
               border: '1px solid var(--border, #eee)',
-              borderRadius: 10,
-              boxShadow: '0 1px 8px rgba(30,20,80,0.08)',
+              borderRadius: 'var(--radius-md, 10px)',
               background: '#fff',
-              padding: '1.1rem 1rem 0.8rem 1rem',
-              marginBottom: 0,
+              boxShadow: 'var(--shadow-lg, 0 2px 24px rgba(30,81,185,0.08))',
+              padding: '1rem 0.8rem',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              scrollSnapAlign: 'start',
-              transition: 'transform 0.22s cubic-bezier(.24,1.5,.9,1), box-shadow 0.24s cubic-bezier(.24,1.5,.9,1)'
+              minHeight: 170,
+              maxWidth: 220,
+              minWidth: 0,
+              margin: '0 auto',
+              transition: 'transform 0.2s, box-shadow 0.2s',
+              cursor: 'pointer'
             }}
           >
             <img
               src={art.image_url}
               alt={art.name}
               style={{
-                width: '90%',
-                minHeight: 70,
-                borderRadius: 7,
-                marginBottom: 12,
+                width: '82%',
+                height: 74,
                 objectFit: 'cover',
+                borderRadius: 7,
+                marginBottom: 10,
                 background: '#f3efe3'
               }}
             />
-            <h3 style={{
-              color: 'var(--primary)',
-              fontWeight: 600,
-              fontSize: 15,
-              margin: '0 0 6px 0',
-              textAlign: 'center'
-            }}>
+            <h3
+              style={{
+                color: 'var(--primary)',
+                fontWeight: 600,
+                fontSize: 15,
+                textAlign: 'center',
+                margin: '0 0 5px 0'
+              }}
+            >
               {art.name}
             </h3>
-            <div className="heritage-meta" style={{
-              fontSize: 13,
-              color: 'var(--text-secondary)',
-              textAlign: 'center',
-              padding: '0 2px'
-            }}>
+            <div
+              className="heritage-meta"
+              style={{
+                fontSize: 13,
+                color: 'var(--text-secondary)',
+                textAlign: 'center',
+                padding: '0 2px'
+              }}
+            >
               {art.description}
             </div>
           </div>
@@ -158,8 +162,15 @@ export default function Art() {
         }}
       >
         <form onSubmit={handleSubmit}>
-          {/* Art Style Panel */}
-          <div className="tabs" style={{ marginBottom: '2rem', gap: 20 }}>
+          {/* Art Style Panel - now horizontal */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'stretch',
+            gap: '1.2rem',
+            marginBottom: '2rem'
+          }}>
             {artStyles.map(({ value, label, icon }) => {
               const selected = formData.style === value;
               return (
@@ -169,33 +180,33 @@ export default function Art() {
                   className={`tab${selected ? ' active' : ''}`}
                   aria-pressed={selected}
                   style={{
+                    flex: 1,
+                    maxWidth: 180,
+                    minWidth: 120,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    minWidth: 125,
-                    fontWeight: selected ? 600 : 500,
-                    background: selected ? "var(--primary)" : "transparent",
+                    justifyContent: 'center',
+                    fontWeight: selected ? 700 : 500,
+                    background: selected ? "var(--primary)" : "#fff",
                     color: selected ? "#fff" : "var(--text-primary)",
-                    border: selected ? "1.8px solid var(--primary)" : "1px solid var(--border)",
-                    boxShadow: selected ? "0 4px 16px rgba(30,81,185,0.11)" : "none",
-                    fontSize: 17,
-                    transition: "all 0.23s",
-                    outline: selected ? "2px solid var(--secondary)" : 'none',
-                    outlineOffset: "-4px",
-                    borderRadius: "var(--radius-sm, 8px)",
-                    padding: "15px 12px",
+                    border: selected ? "2px solid var(--primary)" : "1.5px solid var(--border)",
+                    boxShadow: selected ? "0 2px 10px 0 rgba(30,81,185,0.11)" : "none",
+                    fontSize: 16,
+                    borderRadius: '10px',
+                    padding: '18px 6px 13px 6px',
+                    transition: "all 0.23s cubic-bezier(.61,-0.2,.22,1.09)",
                     cursor: "pointer"
                   }}
                   onClick={() => setFormData({ ...formData, style: value })}
                 >
-                  <span style={{ fontSize: 30, marginBottom: 6 }}>{icon}</span>
+                  <span style={{ fontSize: 32, marginBottom: 6 }}>{icon}</span>
                   {label}
                 </button>
               );
             })}
           </div>
 
-          {/* Textarea */}
           <div style={{ marginBottom: '1.6rem' }}>
             <label htmlFor="prompt" style={{
               display: 'block',

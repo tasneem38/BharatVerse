@@ -110,24 +110,6 @@ python -c "import google.generativeai as genai; genai.configure(api_key='YOUR_KE
 Test database connection
 python -c "from app.database import engine; engine.connect(); print('✅ Database connected')"
 
-
-## 📦 Project Structure
-
-backend/
-├── app/
-│ ├── api/routes/ # API endpoints
-│ ├── models/ # Database models
-│ ├── schemas/ # Pydantic schemas
-│ ├── services/ # Business logic
-│ ├── utils/ # Helper functions
-│ ├── config.py # Configuration
-│ ├── database.py # Database setup
-│ └── main.py # FastAPI app
-├── init_db.py # Database initialization
-├── seed_data.py # Sample data seeder
-├── requirements.txt # Dependencies
-└── .env # Environment variables
-
 ## 🚀 Deployment
 
 ### Using Render
@@ -158,7 +140,3 @@ docker run -p 8000:8000 --env-file .env bharatverse-backend
 **Import errors**
 - Ensure all `__init__.py` files exist
 - Reinstall dependencies
-
-## 📝 License
-
-MIT License - See LICENSE file

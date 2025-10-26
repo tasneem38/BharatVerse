@@ -63,19 +63,19 @@ STATE_ITINERARIES = {
             {
                 "name": "Fatehpur Sikri",
                 "description": "Historic Mughal capital built by Emperor Akbar, known for its red sandstone architecture.",
-                "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/21/Fatehpur_Sikri.jpg"
+                "image_url": "images/FatehpurSikri.jpg"
             }
         ],
         "festivals": [
             {
                 "name": "Holi, Mathura-Vrindavan",
                 "description": "The festival of colors celebrated vibrantly in Lord Krishna’s birthplace.",
-                "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Holi_Mathura.jpg"
+                "image_url": "images/Holi.png"
             },
             {
                 "name": "Diwali in Ayodhya",
                 "description": "Known for record-breaking diya (lamp) celebrations on the banks of the Saryu River.",
-                "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Ayodhya_Diwali_Celebration.jpg"
+                "image_url": "images/Diwali.jpg"
             }
         ],
         "food": [
