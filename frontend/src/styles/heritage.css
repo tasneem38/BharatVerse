@@ -1,0 +1,118 @@
+.heritage-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.heritage-header h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.search-bar {
+  display: flex;
+  gap: var(--spacing-sm);
+  max-width: 600px;
+  margin: 0 auto var(--spacing-lg);
+}
+
+.search-bar input {
+  flex: 1;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border);
+  background: transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.tab:hover {
+  background: var(--secondary);
+  color: white;
+}
+
+.tab.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.heritage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.heritage-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.heritage-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.heritage-card h3 {
+  color: var(--primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.heritage-meta {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.heritage-significance {
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+}
+.heritage-carousel-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.heritage-carousel-row::-webkit-scrollbar {
+  height: 8px;
+}
+.heritage-carousel-row::-webkit-scrollbar-thumb {
+  background: #e8e8e8;
+  border-radius: 8px;
+}
+.heritage-carousel-row .heritage-card {
+  min-width: 265px;
+  max-width: 320px;
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  transition: transform 0.22s cubic-bezier(.24,1.5,.9,1), box-shadow 0.24s cubic-bezier(.24,1.5,.9,1);
+  box-shadow: 0 1px 8px rgba(30,20,80,0.08);
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+.heritage-carousel-row .heritage-card:hover, 
+.heritage-carousel-row .heritage-card:focus {
+  transform: scale(1.07) translateY(-7px);
+  box-shadow: 0 12px 30px 0 rgba(80,60,150,0.16), 0 2px 24px rgba(30,120,180,0.08);
+  z-index: 10;
+}
