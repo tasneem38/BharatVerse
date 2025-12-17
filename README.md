@@ -10,15 +10,6 @@
 
 ---
 
-**BharatVerse** is an **AI-powered cultural discovery platform** that enables users to explore India’s heritage through **emotion-based discovery, AI storytelling, and immersive UI design**.
-
-- Built using **React + Tailwind + FastAPI**
-- AI-driven cultural narratives & personalized experiences
-- Finalist (**Top 26 out of 513 teams**) at a **national-level hackathon**
-- Designed to scale into **digital museums, AR/VR heritage tours, and educational platforms**
-
----
-
 ## 🎯 Problem Statement
 
 India’s cultural heritage—art forms, traditions, monuments, and folklore—is often presented in fragmented, text-heavy formats that fail to engage modern audiences.  
