@@ -10,8 +10,6 @@
 
 ---
 
-## ⚡ TL;DR (For Recruiters & Reviewers)
-
 **BharatVerse** is an **AI-powered cultural discovery platform** that enables users to explore India’s heritage through **emotion-based discovery, AI storytelling, and immersive UI design**.
 
 - Built using **React + Tailwind + FastAPI**
