@@ -11,6 +11,7 @@ import Chat from './pages/Chat';
 import Heritage from './pages/Heritage';
 import Itinerary from './pages/Itinerary';
 import Art from './pages/Art';
+import HeritageViewer from './pages/HeritageViewer';
 
 function AppContent() {
   const location = useLocation();
@@ -32,6 +33,7 @@ function AppContent() {
           <Route path="/chat" element={<Chat />} />
           <Route path="/itinerary" element={<Itinerary />} />
           <Route path="/art" element={<Art />} />
+          <Route path="/explore-3d" element={<HeritageViewer />} />
         </Routes>
       </main>
       {showFooter && <Footer />}

@@ -1,8 +1,6 @@
-from fastapi import APIRouter, Depends
-from ...models.user import User
+from fastapi import APIRouter
 from ...schemas.itinerary import ArtGenerateRequest
 from ...services.ai_service import ai_service
-from ...services.auth_service import get_current_user
 
 router = APIRouter(prefix="/api/art", tags=["Art"])
 

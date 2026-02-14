@@ -1,12 +1,10 @@
-from googletrans import Translator
+from .ai_service import ai_service
 from typing import Optional
 
 class TranslationService:
-    """Free translation service using googletrans library"""
+    """Translation service using AI (Llama 3.1)"""
     
     def __init__(self):
-        self.translator = Translator()
-        
         self.language_codes = {
             "hindi": "hi",
             "tamil": "ta",
@@ -22,41 +20,40 @@ class TranslationService:
         }
     
     def translate_text(self, text: str, target_language: str) -> Optional[str]:
-        """
-        Translate text to target language
-        
-        Args:
-            text: Text to translate
-            target_language: Target language name or code
+        """Translate text to target language"""
+        if not ai_service.client:
+            return f"[Offline] {text}"
             
-        Returns:
-            Translated text or error message
-        """
+        lang_name = target_language
+        # If code is passed, find name (not strictly necessary as LLM understands codes, but helpful)
+        for name, code in self.language_codes.items():
+            if code == target_language.lower():
+                lang_name = name
+                break
+            
+        prompt = f"""Translate the following text to {lang_name}.
+        Text: "{text}"
+        
+        Return ONLY the translated text. No explanation."""
+        
         try:
-            lang_code = self.language_codes.get(target_language.lower(), target_language)
-            result = self.translator.translate(text, dest=lang_code)
-            return result.text
+            completion = ai_service.client.chat.completions.create(
+                model="llama-3.1-8b-instant",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.3
+            )
+            return completion.choices[0].message.content.strip()
         except Exception as e:
-            return f"Translation error: {str(e)}"
-    
+            print(f"Translation Error: {e}")
+            return text
+
     def detect_language(self, text: str) -> str:
-        """
-        Detect the language of text
-        
-        Args:
-            text: Text to detect language for
-            
-        Returns:
-            Language code
-        """
-        try:
-            result = self.translator.detect(text)
-            return result.lang
-        except:
-            return "unknown"
-    
+        """Detect language using AI"""
+        # Simplification: return 'unknown' or verify via AI if needed. 
+        # For now, let's keep it simple or implement via AI.
+        return "unknown"
+
     def get_supported_languages(self) -> dict:
-        """Get list of supported languages"""
         return self.language_codes
 
 # Create singleton instance

@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .api.routes import auth, chat, itinerary, art, heritage, translate
+from .api.routes import chat, itinerary, art, heritage, translate
+from .routers import scene
 from .config import get_settings
 
 settings = get_settings()
@@ -21,12 +22,12 @@ app.add_middleware(
 )
 
 # Include routers
-app.include_router(auth.router)
 app.include_router(chat.router)
 app.include_router(itinerary.router)
 app.include_router(art.router)
 app.include_router(heritage.router)
 app.include_router(translate.router)
+app.include_router(scene.router)
 
 @app.get("/")
 def root():
